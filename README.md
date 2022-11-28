@@ -22,4 +22,11 @@ We will use `create-react-app` due to its simplicity, given the fact that this t
 
 #### C2: Add the GraphQL connection
 
+Install the necessary packages to connect to the endpoint and make a basic query. At the moment, the jest test has been removed, due to its content not providing much value at this point.
+
+Links:
+
+- https://www.freecodecamp.org/news/5-ways-to-fetch-data-react-graphql/
+- https://prismic.io/docs/query-data-graphql
+
 #### C3: Create the histogram
