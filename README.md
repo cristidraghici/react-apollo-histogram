@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# React Apollo Histogram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This is a JavaScript web application that fetches a relevantly-sized list of posts from out mock GraphQL API and displays a chart/histogram representing the number of posts created in each month of 2019. Our GraphQL endpoint: https://fakerql.goosfraba.ro/graphql
 
-## Available Scripts
+## Requirements and Suggestions
 
-In the project directory, you can run:
+The application must be built using React, how you scaffold it is up to you. We use Apollo for GraphQL API communication, but you can use a different solution if you feel it is better suited. The histogram must be constructed using D3 or VISX (recommended). Use Git for version control and commit any progress you make. Write a brief summary in your README about your process, your choices and any challenges you faced.
 
-### `npm start`
+### Links
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Documentation for the schema behind FakerQL: https://github.com/notrab/fakerql
+- Our GraphQL Playground: https://fakerql.goosfraba.ro/
+- VISX Repo: https://github.com/airbnb/visx
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Commits
 
-### `npm test`
+The initial plan is to scaffold the project, add graphql, then create the histogram and maybe some cleanup at the end. Depending on the complexity of the code, we might also add some jest tests, if needed. For proper code formatting we will use prettier with the defaults provided by vscode and also the `.editorconfig` file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### C1: Initial commit
 
-### `npm run build`
+We will use `create-react-app` due to its simplicity, given the fact that this task is one with small complexity.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### C2: Add the GraphQL connection
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### C3: Create the histogram
