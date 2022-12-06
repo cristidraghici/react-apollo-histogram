@@ -1,0 +1,17 @@
+.Chart {
+  background-color: aliceblue;
+  display: inline-block;
+  padding: 20px;
+}
+
+.Chart .axis {
+  font-size: 12px;
+}
+
+.Chart .bar {
+  fill: blue;
+  transition: all 0.3s ease-in-out;
+}
+.Chart .bar:hover {
+  fill: red;
+}

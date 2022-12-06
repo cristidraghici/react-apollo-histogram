@@ -1,47 +1,24 @@
+import usePosts from './hooks/usePosts';
+import Chart from './components/Chart';
+
 import './App.css';
-import { useQuery, gql } from '@apollo/client';
-import { format } from 'date-fns';
-
-/**
- * Make up a reasonable maximum post count which will show posts from 2019
- */
-const REASONABLE_MAXIMUM_POSTS_COUNT = 1000;
-
-// query
-const GET_POSTS = gql`
-  {
-    allPosts(count: ${REASONABLE_MAXIMUM_POSTS_COUNT}) {
-      id
-      title
-      createdAt
-    }
-  }
-`;
+import { useEffect } from 'react';
 
 function App() {
-  const { loading, error, data } = useQuery(GET_POSTS, {
-    variables: { limit: 5 },
-  });
+  const { getPosts, refetchPosts, isLoadingPosts, postsError, postsPerMonthOf2019 } = usePosts();
 
-  if (loading) return <div>Loading...</div>;
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
 
-  if (error) {
-    console.error(error);
-    return <div>Error!</div>;
-  }
-
-  const { allPosts: posts } = data;
+  if (isLoadingPosts) return <div>Loading...</div>;
 
   return (
     <div className="App">
       <h1>React and Apollo</h1>
-      <div>
-        {posts.map((post) => (
-          <div key={post.id}>
-            {format(post.createdAt, 'yyyy-MM')} - {post.title}
-          </div>
-        ))}
-      </div>
+      {!!postsError && <div>{postsError.toString()}! <button onClick={() => refetchPosts()}>refetch posts</button></div>}
+
+      <Chart title="Posts in 2019" height={400} width={800} data={postsPerMonthOf2019} />
     </div>
   );
 }

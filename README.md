@@ -26,7 +26,16 @@ Install the necessary packages to connect to the endpoint and make a basic query
 
 Links:
 
-- https://www.freecodecamp.org/news/5-ways-to-fetch-data-react-graphql/
-- https://prismic.io/docs/query-data-graphql
+- [https://www.freecodecamp.org/news/5-ways-to-fetch-data-react-graphql/](https://www.freecodecamp.org/news/5-ways-to-fetch-data-react-graphql/)
+- [https://prismic.io/docs/query-data-graphql](https://prismic.io/docs/query-data-graphql)
 
 #### C3: Create the histogram
+
+We would like to have a data structure which would represent the each of the months in 2019. With this occasion, we will refactor the fetching part of the app into a custom hook. We will also create the initial form of the histogram, with bars and left and bottom axis.
+
+Links:
+
+- [https://date-fns.org/v2.0.0-alpha.25/docs/format](https://date-fns.org/v2.0.0-alpha.25/docs/format)
+- [https://thewebdev.info/2020/12/26/create-a-react-bar-graph-with-the-visx-library/](https://thewebdev.info/2020/12/26/create-a-react-bar-graph-with-the-visx-library/)
+
+#### C4: Finishing touches
