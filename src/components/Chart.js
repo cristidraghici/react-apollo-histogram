@@ -1,10 +1,21 @@
+import { useCallback } from 'react';
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import { scaleLinear, scaleBand } from '@visx/scale'
 import { AxisLeft, AxisBottom } from '@visx/axis';
 import { GridRows, GridColumns } from '@visx/grid';
+import { useTooltip, TooltipWithBounds, defaultStyles } from '@visx/tooltip';
+import { localPoint } from '@visx/event';
 
 import './Chart.css';
+
+// defining tooltip styles
+const tooltipStyles = {
+  ...defaultStyles,
+  minWidth: 10,
+  backgroundColor: 'rgba(0,0,0,0.9)',
+  color: 'white',
+};
 
 const Chart = ({ title = '', data = {}, width = 100, height = 100, margin = {
   top: 40,
@@ -12,6 +23,24 @@ const Chart = ({ title = '', data = {}, width = 100, height = 100, margin = {
   bottom: 40,
   left: 40
 } }) => {
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+
+  const handleMove = useCallback((event, datum) => {
+    const coords = localPoint(event.target.ownerSVGElement, event);
+    showTooltip({
+      tooltipLeft: coords.x + 20,
+      tooltipTop: coords.y,
+      tooltipData: datum
+    });
+  }, [showTooltip]);
+
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
 
@@ -29,10 +58,6 @@ const Chart = ({ title = '', data = {}, width = 100, height = 100, margin = {
     round: true,
     domain: [0, Math.max(...data.map(y))]
   });
-
-
-  xScale.range([0, xMax]);
-  yScale.range([yMax, 0]);
 
   const compose = (scale, accessor) => (data) => scale(accessor(data));
   const xPoint = compose(xScale, x);
@@ -70,12 +95,29 @@ const Chart = ({ title = '', data = {}, width = 100, height = 100, margin = {
                   height={barHeight}
                   width={xScale.bandwidth()}
                   fill="#fc2e1c"
+
+                  onMouseOver={(e) => handleMove(e, d.value)}
+                  onTouchMove={(e) => handleMove(e, d.value)}
+                  onMouseMove={(e) => handleMove(e, d.value)}
+                  onMouseOut={hideTooltip}
                 />
               </Group>
             );
           })}
         </Group>
       </svg>
+
+      {tooltipOpen && (
+        <TooltipWithBounds
+          // set this to random so it correctly updates with parent bounds
+          key={Math.random()}
+          top={tooltipTop}
+          left={tooltipLeft}
+          style={tooltipStyles}
+        >
+          <strong>{tooltipData}</strong>
+        </TooltipWithBounds>
+      )}
     </div>
   );
 };

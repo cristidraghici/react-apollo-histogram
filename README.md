@@ -38,4 +38,11 @@ Links:
 - [https://date-fns.org/v2.0.0-alpha.25/docs/format](https://date-fns.org/v2.0.0-alpha.25/docs/format)
 - [https://thewebdev.info/2020/12/26/create-a-react-bar-graph-with-the-visx-library/](https://thewebdev.info/2020/12/26/create-a-react-bar-graph-with-the-visx-library/)
 
-#### C4: Finishing touches
+#### C4: Add a tooltip to show the exact value
+
+One necessary feature is to see the exact value of a bar in the histogram. To do so, we will add a tooltip on each of the bars in the histogram.
+
+Links:
+
+- [https://airbnb.io/visx/docs/tooltip](https://airbnb.io/visx/docs/tooltip)
+- [https://dev.to/mariazentsova/building-a-line-chart-in-react-with-visx-1jkp](https://dev.to/mariazentsova/building-a-line-chart-in-react-with-visx-1jkp)
